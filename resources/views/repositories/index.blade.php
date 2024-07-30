@@ -41,6 +41,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <button class="btn btn-primary" name="action" type="submit" value="filter">Filter</button>
+                    <button class="btn btn-secondary" name="action" type="submit" value="export">Export</button>
                 </div>
             </div>
         </form>

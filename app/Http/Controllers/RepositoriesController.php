@@ -31,6 +31,10 @@ class RepositoriesController extends Controller
 
         $repositories = json_decode($response->getBody()->getContents())->items;
 
+        if ($request->input('action') == 'export') {
+            return Excel::download(new RepositoriesExport($repositories), 'repositories.xlsx');
+        }
+
         return view('repositories.index', compact('repositories'));
     }
 }
