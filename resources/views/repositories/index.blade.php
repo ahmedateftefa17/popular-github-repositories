@@ -11,6 +11,11 @@
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Popular GitHub Repositories</h1>
+        @if(session()->has('message'))
+            <div class="alert alert-success">
+                {{ session()->get('message') }}
+            </div>
+        @endif
         <form class="mb-4" method="GET">
             <div class="row">
                 <div class="col-md-4">
@@ -42,6 +47,7 @@
                 <div class="col-md-12">
                     <button class="btn btn-primary" name="action" type="submit" value="filter">Filter</button>
                     <button class="btn btn-secondary" name="action" type="submit" value="export">Export</button>
+                    <button class="btn btn-warning" name="action" type="submit" value="mail-export">Mail Export</button>
                 </div>
             </div>
         </form>

@@ -35,6 +35,15 @@ class RepositoriesController extends Controller
             return Excel::download(new RepositoriesExport($repositories), 'repositories.xlsx');
         }
 
+        if ($request->input('action') == 'mail-export') {
+            Mail::to(new Address('admin@example.com', 'Admin'))
+                ->send(new RepositoriesExported($repositories));
+
+            $request->session()->flash('message', 'Exported repositories sent to your email (admin@example.com)');
+
+            return redirect()->back();
+        }
+
         return view('repositories.index', compact('repositories'));
     }
 }
